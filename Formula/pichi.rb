@@ -1,8 +1,8 @@
 class Pichi < Formula
   desc "Application Layer Proxy controlled via RESTful APIs"
   homepage "https://github.com/pichi-router/pichi"
-  url "https://github.com/pichi-router/pichi/archive/1.2.1-rc.tar.gz"
-  sha256 "f02740c3dac6475164ef20e010f4df32043f06e4682f9f6032753e24c241e950"
+  url "https://github.com/pichi-router/pichi/archive/1.2.1.tar.gz"
+  sha256 "85e7cec8e52276caf6c75e38da9423d9b209219e386e47da75cf755834e77dd6"
   depends_on "cmake" => :build
   depends_on "rapidjson" => :build
   depends_on "boost"
@@ -14,7 +14,7 @@ class Pichi < Formula
   def install
     cmake_args = *std_cmake_args
     cmake_args.delete_if { |opt| opt.start_with?("-DCMAKE_BUILD_TYPE") }
-    cmake_args << "-DVERSION=1.2.1-rc"
+    cmake_args << "-DVERSION=1.2.1"
     cmake_args << "-DCMAKE_BUILD_TYPE=MinSizeRel"
     cmake_args << "-DBUILD_TEST=OFF"
     cmake_args << "-DSTATIC_LINK=OFF"
