@@ -1,8 +1,8 @@
 class Pichi < Formula
   desc "Application Layer Proxy controlled via RESTful APIs"
   homepage "https://github.com/pichi-router/pichi"
-  url "https://github.com/pichi-router/pichi/archive/1.2.1.tar.gz"
-  sha256 "85e7cec8e52276caf6c75e38da9423d9b209219e386e47da75cf755834e77dd6"
+  url "https://github.com/pichi-router/pichi/archive/1.3.0-rc.tar.gz"
+  sha256 "69ce0bbf89bb693ab43cc8eb4a081dffb8ce7ae8bc765ce02de3b610c0f038f5"
   depends_on "cmake" => :build
   depends_on "rapidjson" => :build
   depends_on "boost"
