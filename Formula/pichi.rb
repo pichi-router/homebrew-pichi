@@ -43,6 +43,7 @@ class Pichi < Formula
       log="${prefix}/var/log/pichi.log"
 
       # Run server
+      mkdir -p "$(dirname ${pid})" "$(dirname ${log})"
       "${pichi}" "$@" >>"${log}" 2>&1 &
       echo "$!" > "${pid}"
       if ! get_pid "${pid}" >/dev/null 2>&1; then
