@@ -1,26 +1,26 @@
 class Pichi < Formula
-  desc "Application Layer Proxy controlled via RESTful APIs"
+  desc "Flexible rule-based proxy"
   homepage "https://github.com/pichi-router/pichi"
-  url "https://github.com/pichi-router/pichi/archive/1.3.0-rc.tar.gz"
-  sha256 "4720a5699016255131911a214d3f656d333477322ea7fafdf83bc41516683756"
+  url "https://github.com/pichi-router/pichi/archive/1.3.0.tar.gz"
+  sha256 "f5686a1e7c98d9c9eca88d88af53b85648ceeff9aa33bf2b1d95a09462d74d1c"
   depends_on "cmake" => :build
   depends_on "rapidjson" => :build
   depends_on "boost"
   depends_on "libmaxminddb"
   depends_on "libsodium"
   depends_on "mbedtls"
-  depends_on "openssl"
+  depends_on "libressl"
 
   def install
     cmake_args = *std_cmake_args
     cmake_args.delete_if { |opt| opt.start_with?("-DCMAKE_BUILD_TYPE") }
-    cmake_args << "-DVERSION=1.3.0-rc"
+    cmake_args << "-DVERSION=1.3.0"
     cmake_args << "-DCMAKE_BUILD_TYPE=MinSizeRel"
     cmake_args << "-DBUILD_TEST=OFF"
     cmake_args << "-DSTATIC_LINK=OFF"
     cmake_args << "-DENABLE_TLS=ON"
-    cmake_args << "-DINSTALL_HEADERS=ON"
-    cmake_args << "-DOPENSSL_ROOT_DIR=" + Formula["openssl"].opt_prefix
+    cmake_args << "-DINSTALL_DEVEL=ON"
+    cmake_args << "-DOPENSSL_ROOT_DIR=" + Formula["libressl"].opt_prefix
     system "cmake", *cmake_args, "."
     system "cmake", "--build", buildpath.to_s, ENV.deparallelize
     system "cmake", "--build", buildpath.to_s, "--target", "install/strip"
