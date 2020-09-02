@@ -1,8 +1,8 @@
 class Pichi < Formula
   desc "Flexible rule-based proxy"
   homepage "https://github.com/pichi-router/pichi"
-  url "https://github.com/pichi-router/pichi/archive/1.3.0.tar.gz"
-  sha256 "f5686a1e7c98d9c9eca88d88af53b85648ceeff9aa33bf2b1d95a09462d74d1c"
+  url "https://github.com/pichi-router/pichi/archive/1.3.1.tar.gz"
+  sha256 "be1dc4d501387ef3524697ac804bec3ceb235a0c323ef8901532f04b0fab5cac"
   depends_on "cmake" => :build
   depends_on "rapidjson" => :build
   depends_on "boost"
