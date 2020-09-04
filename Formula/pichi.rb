@@ -14,7 +14,7 @@ class Pichi < Formula
   def install
     cmake_args = *std_cmake_args
     cmake_args.delete_if { |opt| opt.start_with?("-DCMAKE_BUILD_TYPE") }
-    cmake_args << "-DVERSION=1.3.0"
+    cmake_args << "-DVERSION=1.3.1"
     cmake_args << "-DCMAKE_BUILD_TYPE=MinSizeRel"
     cmake_args << "-DBUILD_TEST=OFF"
     cmake_args << "-DSTATIC_LINK=OFF"
