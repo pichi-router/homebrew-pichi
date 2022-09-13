@@ -1,8 +1,8 @@
 class Pichi < Formula
   desc "Flexible rule-based proxy"
   homepage "https://github.com/pichi-router/pichi"
-  url "https://github.com/pichi-router/pichi/archive/1.4.0.tar.gz"
-  sha256 "9b6cfadb57f80af516fb8a7d6d1199ad1c03f1c5ba0378a223c0733b12b27482"
+  url "https://github.com/pichi-router/pichi/archive/1.5.0-rc.tar.gz"
+  sha256 "f3d802f90a66f0fbff5fa30663f7bdbd9248386859ca431cadad75b15eb95af7"
   depends_on "cmake" => :build
   depends_on "rapidjson" => :build
   depends_on "boost"
@@ -14,11 +14,12 @@ class Pichi < Formula
   def install
     cmake_args = *std_cmake_args
     cmake_args.delete_if { |opt| opt.start_with?("-DCMAKE_BUILD_TYPE") }
-    cmake_args << "-DVERSION=1.4.0"
+    cmake_args << "-DVERSION=1.5.0-rc"
     cmake_args << "-DCMAKE_BUILD_TYPE=MinSizeRel"
     cmake_args << "-DBUILD_TEST=OFF"
     cmake_args << "-DSTATIC_LINK=OFF"
-    cmake_args << "-DINSTALL_DEVEL=ON"
+    cmake_args << "-DINSTALL_DEVEL=OFF"
+    cmake_args << "-DTRANSPARENT_PF=ON"
     cmake_args << "-DOPENSSL_ROOT_DIR=" + Formula["libressl"].opt_prefix
     system "cmake", *cmake_args, "."
     system "cmake", "--build", buildpath.to_s, ENV.deparallelize
